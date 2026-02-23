@@ -1,0 +1,19 @@
+{
+  "frontend/src/index.css": "Global styles with warm earth tone OKLCH color system (terracotta, sage green, cream) for both light and dark modes, custom gradient utilities, and Inter font family.",
+  "frontend/tailwind.config.js": "Tailwind configuration extended with warm earth tone color palette, custom border radius presets, Inter font family, and custom shadow utilities for cohesive design.",
+  "frontend/src/App.tsx": "Main application component with TanStack Router setup, authentication flow, profile setup modal, and theme provider integration.",
+  "frontend/src/components/Layout.tsx": "Main layout component with header, navigation tabs, theme toggle, logout button, and footer with caffeine.ai attribution.",
+  "frontend/src/components/ProfileSetupModal.tsx": "Modal dialog for first-time user profile setup requiring username input before accessing the app, with close button hidden via CSS selector.",
+  "frontend/src/components/ContactCard.tsx": "Reusable contact card component displaying contact name, email, and phone with warm earth tone styling and rounded corners.",
+  "frontend/src/components/ContactsList.tsx": "Contacts list view with loading states, empty state with hero image, and contact count display.",
+  "frontend/src/components/SearchContacts.tsx": "Search interface for finding users by principal ID with add contact functionality and result display.",
+  "frontend/src/components/InviteLinks.tsx": "Invite link generation and acceptance interface with copy-to-clipboard functionality and URL parameter parsing.",
+  "frontend/src/components/QRCodeGenerator.tsx": "QR code generator component that loads the qrcode library from CDN dynamically and creates downloadable QR codes from invite links without requiring npm package installation.",
+  "frontend/src/components/QRScanner.tsx": "QR code scanner component using useQRScanner hook with camera controls, error handling, and automatic contact addition.",
+  "frontend/src/pages/ContactsListPage.tsx": "Contacts list page with header and ContactsList component integration.",
+  "frontend/src/pages/SearchContactsPage.tsx": "Search contacts page with decorative header and SearchContacts component.",
+  "frontend/src/pages/InviteLinksPage.tsx": "Invite links page with tabs for invite links and QR code generation, including a button to generate invite codes specifically for QR code creation.",
+  "frontend/src/pages/QRScannerPage.tsx": "QR scanner page with decorative header and QRScanner component.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for all backend operations including profile management, contacts, search, invite codes, and RSVP acceptance.",
+  "frontend/package.json": "Package configuration file with qrcode library and its TypeScript type definitions added to dependencies."
+}

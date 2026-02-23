@@ -1,0 +1,192 @@
+{
+  "kind": "build_request",
+  "title": "Build contact management app with invite links, QR codes, and username search",
+  "projectName": "Quick Contacts",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a backend user registry that stores user profiles with unique usernames and contact information",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "searching usernames"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Each user has a unique username that can be used for lookup",
+        "User profiles are persisted in stable storage",
+        "Username searches return matching user profiles"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement backend logic to generate shareable invite links for users to add contacts",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "add contacts through invite links"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Each user can generate a unique invite link",
+        "Invite links can be validated and used to establish contact connections",
+        "Accepting an invite link adds both users to each other's contact lists"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Implement backend contact management system that allows users to maintain a personal contact list",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "contact management app"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Users can add contacts to their personal list",
+        "Users can view their complete contact list",
+        "Users can remove contacts from their list",
+        "Contact relationships are persisted in stable storage"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Create a username search interface that allows users to find and add contacts by entering usernames",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "by searching usernames"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Search input field for entering usernames",
+        "Search results display matching user profiles",
+        "Users can add found contacts directly from search results",
+        "Search provides feedback for no results or errors"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Build an invite link sharing interface where users can generate and copy their personal invite link",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "add contacts through invite links"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Users can generate their unique invite link",
+        "Copy-to-clipboard functionality for invite links",
+        "Visual confirmation when link is copied",
+        "Users can accept invite links shared by others"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Implement QR code generation for user profiles that encode invite information",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "QR codes"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Each user profile generates a unique QR code",
+        "QR code encodes the user's invite information",
+        "QR code is visually displayed and can be downloaded"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Create a QR code scanner interface that allows users to scan QR codes from other users to add them as contacts",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "QR codes"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Camera access for scanning QR codes",
+        "Real-time QR code detection and decoding",
+        "Automatic contact addition upon successful QR scan",
+        "Error handling for invalid or unreadable QR codes"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Build a contacts list view that displays all saved contacts with their usernames and profile information",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "contact management app"
+        ]
+      },
+      "acceptanceCriteria": [
+        "List displays all user contacts",
+        "Each contact shows username and relevant profile details",
+        "List updates automatically when contacts are added or removed",
+        "Empty state shown when no contacts exist"
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Design a clean, modern interface with a cohesive visual theme featuring warm earth tones (terracotta, sage green, cream), rounded corners, and friendly typography that makes contact management feel approachable and intuitive",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Consistent color palette applied across all screens",
+        "Typography hierarchy that enhances readability",
+        "Rounded UI elements that create a friendly feel",
+        "Cohesive design language throughout the application"
+      ]
+    }
+  ],
+  "constraints": [
+    "Must not attempt to access device contacts directly",
+    "Must not implement real-time messaging features",
+    "QR code scanning must work within browser constraints"
+  ],
+  "nonGoals": [
+    "Direct device contact synchronization",
+    "Real-time chat or messaging functionality",
+    "Third-party authentication beyond Internet Identity",
+    "Push notifications"
+  ],
+  "imageRequirements": {
+    "required": [
+      "Friendly contact icon illustration with warm earth tones showing two people connecting (contacts-hero.dim_400x300.png)",
+      "QR code placeholder icon in terracotta color (qr-placeholder.dim_128x128.png)",
+      "Search icon in sage green color (search-icon.dim_64x64.png)"
+    ],
+    "edits": []
+  }
+}

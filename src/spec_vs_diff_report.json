@@ -1,0 +1,99 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-23T07:36:46.810Z",
+  "summary": "The implementation covers most core requirements but has critical gaps in username-based search functionality, bidirectional contact relationships from invite links, and contact removal. The frontend searches by Principal ID instead of username, invite links only submit RSVPs rather than establishing mutual contact relationships, and there's no implementation for removing contacts. QR code functionality and UI design requirements are well-implemented.",
+  "missing_requirements": [
+    {
+      "id": "REQ-1",
+      "requirement": "Username searches return matching user profiles",
+      "reason": "Backend has getProfile() that takes Principal, not username. Frontend SearchContacts.tsx searches by Principal ID, not username. No backend function exists to search users by username string.",
+      "evidence": [
+        "backend/main.mo",
+        "frontend/src/components/SearchContacts.tsx",
+        "frontend/src/hooks/useQueries.ts"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "requirement": "Accepting an invite link adds both users to each other's contact lists",
+      "reason": "Backend submitRSVP only stores RSVP data, does not establish bidirectional contact relationships. No logic exists to add both users to each other's contact lists.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "requirement": "Users can remove contacts from their list",
+      "reason": "No backend function or frontend UI exists for removing contacts. Only addContact is implemented.",
+      "evidence": [
+        "backend/main.mo",
+        "frontend/src/hooks/useQueries.ts",
+        "frontend/src/components/ContactCard.tsx"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "requirement": "Search input field for entering usernames",
+      "reason": "Search interface in SearchContacts.tsx prompts for principal ID instead of username. UI displays Enter principal ID to search placeholder.",
+      "evidence": [
+        "frontend/src/components/SearchContacts.tsx",
+        "frontend/src/pages/SearchContactsPage.tsx"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "RSVP submission system with name and attending boolean parameters",
+      "reason": "BuildRequest specifies invite links for contact connections, not RSVP or event management. submitRSVP function with attending boolean is not requested functionality.",
+      "evidence": [
+        "backend/main.mo",
+        "frontend/src/hooks/useQueries.ts"
+      ]
+    },
+    {
+      "description": "Admin-only invite code generation requiring admin permission",
+      "reason": "REQ-2 and REQ-5 specify that each user can generate their own invite link. Implementation restricts generateInviteCode to admins only, preventing regular users from creating invite links.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "description": "Contact storage with email and phone fields",
+      "reason": "BuildRequest specifies storing user profiles with usernames for contact management. Implementation adds email and phone fields to Contact type which were not requested.",
+      "evidence": [
+        "backend/main.mo",
+        "frontend/src/components/ContactCard.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.85,
+  "changed_files": [
+    "all_files_summary.json",
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/src/App.tsx",
+    "frontend/src/components/ContactCard.tsx",
+    "frontend/src/components/ContactsList.tsx",
+    "frontend/src/components/InviteLinks.tsx",
+    "frontend/src/components/Layout.tsx",
+    "frontend/src/components/ProfileSetupModal.tsx",
+    "frontend/src/components/QRCodeGenerator.tsx",
+    "frontend/src/components/QRScanner.tsx",
+    "frontend/src/components/SearchContacts.tsx",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/src/pages/ContactsListPage.tsx",
+    "frontend/src/pages/InviteLinksPage.tsx",
+    "frontend/src/pages/QRScannerPage.tsx",
+    "frontend/src/pages/SearchContactsPage.tsx",
+    "frontend/src/utils/urlParams.ts",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}

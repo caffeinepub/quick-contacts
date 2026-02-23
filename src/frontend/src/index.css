@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --radius: 1rem;
+        /* Warm earth tones - Light mode */
+        --background: 0.97 0.02 60;
+        --foreground: 0.25 0.03 30;
+        --card: 0.99 0.01 60;
+        --card-foreground: 0.25 0.03 30;
+        --popover: 0.99 0.01 60;
+        --popover-foreground: 0.25 0.03 30;
+        /* Terracotta primary */
+        --primary: 0.62 0.12 35;
+        --primary-foreground: 0.99 0.01 60;
+        /* Sage green secondary */
+        --secondary: 0.68 0.08 145;
+        --secondary-foreground: 0.99 0.01 60;
+        --muted: 0.92 0.02 60;
+        --muted-foreground: 0.50 0.02 30;
+        /* Cream accent */
+        --accent: 0.95 0.03 80;
+        --accent-foreground: 0.30 0.03 30;
+        --destructive: 0.577 0.245 27.325;
+        --destructive-foreground: 0.99 0.01 60;
+        --border: 0.88 0.02 60;
+        --input: 0.88 0.02 60;
+        --ring: 0.62 0.12 35;
+        --chart-1: 0.62 0.12 35;
+        --chart-2: 0.68 0.08 145;
+        --chart-3: 0.75 0.10 80;
+        --chart-4: 0.55 0.15 25;
+        --chart-5: 0.70 0.06 160;
+    }
+
+    .dark {
+        --background: 0.20 0.02 30;
+        --foreground: 0.95 0.02 60;
+        --card: 0.25 0.02 30;
+        --card-foreground: 0.95 0.02 60;
+        --popover: 0.22 0.02 30;
+        --popover-foreground: 0.95 0.02 60;
+        /* Terracotta primary - adjusted for dark */
+        --primary: 0.68 0.12 35;
+        --primary-foreground: 0.15 0.02 30;
+        /* Sage green secondary - adjusted for dark */
+        --secondary: 0.60 0.08 145;
+        --secondary-foreground: 0.95 0.02 60;
+        --muted: 0.30 0.02 30;
+        --muted-foreground: 0.65 0.02 60;
+        /* Cream accent - adjusted for dark */
+        --accent: 0.40 0.03 80;
+        --accent-foreground: 0.95 0.02 60;
+        --destructive: 0.65 0.20 27;
+        --destructive-foreground: 0.95 0.02 60;
+        --border: 0.35 0.02 30;
+        --input: 0.35 0.02 30;
+        --ring: 0.68 0.12 35;
+        --chart-1: 0.68 0.12 35;
+        --chart-2: 0.60 0.08 145;
+        --chart-3: 0.75 0.10 80;
+        --chart-4: 0.55 0.15 25;
+        --chart-5: 0.70 0.06 160;
+    }
+
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    }
+}
+
+@layer components {
+    .earth-gradient {
+        background: linear-gradient(135deg, oklch(var(--accent)) 0%, oklch(var(--background)) 100%);
+    }
+    
+    .terracotta-gradient {
+        background: linear-gradient(135deg, oklch(0.62 0.12 35) 0%, oklch(0.70 0.10 40) 100%);
+    }
+    
+    .sage-gradient {
+        background: linear-gradient(135deg, oklch(0.68 0.08 145) 0%, oklch(0.75 0.06 150) 100%);
+    }
+}
+

@@ -1,0 +1,163 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Quick Contacts - Frontend Implementation",
+  "requirements": [
+    {
+      "id": "REQ-4",
+      "summary": "Create username search interface for finding and adding contacts",
+      "acceptanceCriteria": [
+        "Search input field for entering usernames",
+        "Search results display matching user profiles",
+        "Users can add found contacts directly from search results",
+        "Search provides feedback for no results or errors"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/SearchContacts.tsx",
+          "operation": "create",
+          "description": "Create a search interface component with input field for username lookup, results display with user profile cards, add contact action buttons, loading states, and error/empty state handling. Wire backend getProfile method to fetch user profiles by username. Use warm earth tone styling (terracotta, sage green, cream) with rounded corners."
+        },
+        {
+          "path": "frontend/src/hooks/useSearchUsers.ts",
+          "operation": "create",
+          "description": "Create React Query hook for username search functionality. Implement search query that calls backend getProfile method. Handle loading, error states, and result caching. Return search results, loading state, and error state."
+        },
+        {
+          "path": "frontend/src/hooks/useAddContact.ts",
+          "operation": "create",
+          "description": "Create React Query mutation hook for adding contacts via backend addContact method. Handle success/error states and invalidate contacts query on success."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Build invite link sharing interface with generation and copy functionality",
+      "acceptanceCriteria": [
+        "Users can generate their unique invite link",
+        "Copy-to-clipboard functionality for invite links",
+        "Visual confirmation when link is copied",
+        "Users can accept invite links shared by others"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/InviteLinks.tsx",
+          "operation": "create",
+          "description": "Use the invite-links component to support invite link generation and sharing. Create interface with generate button that calls backend generateInviteCode, display generated invite link with copy-to-clipboard button, show visual confirmation toast on copy success, and handle invite link acceptance flow. Apply warm earth tone styling with rounded UI elements. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/hooks/useGenerateInviteCode.ts",
+          "operation": "create",
+          "description": "Create React Query mutation hook wrapping backend generateInviteCode method. Return mutation function, loading state, and generated code. Handle errors gracefully."
+        },
+        {
+          "path": "frontend/src/hooks/useAcceptInvite.ts",
+          "operation": "create",
+          "description": "Create React Query mutation hook for accepting invite codes. Parse invite code from URL parameters, call backend submitRSVP or appropriate contact-adding method, handle success/error states, and invalidate contacts list on success."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Implement QR code generation for user profiles encoding invite information",
+      "acceptanceCriteria": [
+        "Each user profile generates a unique QR code",
+        "QR code encodes the user's invite information",
+        "QR code is visually displayed and can be downloaded"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/QRCodeGenerator.tsx",
+          "operation": "create",
+          "description": "Create QR code generator component that displays user's invite link as QR code. Use qrcode library or canvas-based generation to encode invite URL. Provide download button to save QR code as image. Style with warm earth tones and rounded corners. Show loading state during generation."
+        },
+        {
+          "path": "frontend/src/hooks/useGenerateQRCode.ts",
+          "operation": "create",
+          "description": "Create hook for QR code generation logic. Accept invite link data as input, generate QR code using qrcode library, return data URL for display, and provide download functionality. Handle errors during generation."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Create QR code scanner interface for adding contacts via camera scan",
+      "acceptanceCriteria": [
+        "Camera access for scanning QR codes",
+        "Real-time QR code detection and decoding",
+        "Automatic contact addition upon successful QR scan",
+        "Error handling for invalid or unreadable QR codes"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/QRScanner.tsx",
+          "operation": "create",
+          "description": "Use the qr-code component to support QR code scanning. Create scanner interface with camera preview using useQRScanner hook, display video feed with proper dimensions and aspect ratio, show start/stop/switch camera controls (hide switch on desktop), handle scanned QR results and automatically add contacts, display error messages for camera/scan failures, and provide visual feedback during scanning. Apply warm earth tone styling. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/hooks/useProcessQRScan.ts",
+          "operation": "create",
+          "description": "Create hook to process QR scan results. Parse scanned data to extract invite code or contact info, validate scanned data format, trigger contact addition via useAddContact hook, handle invalid QR code errors, and provide success/error feedback."
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Build contacts list view displaying all saved contacts with profile information",
+      "acceptanceCriteria": [
+        "List displays all user contacts",
+        "Each contact shows username and relevant profile details",
+        "List updates automatically when contacts are added or removed",
+        "Empty state shown when no contacts exist"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ContactsList.tsx",
+          "operation": "create",
+          "description": "Create contacts list component that fetches and displays user's contacts via backend getContacts method. Render contact cards showing name, email, phone with warm earth tone styling and rounded corners. Include empty state with friendly message and contacts-hero.dim_400x300.png image from frontend/public/assets/generated/contacts-hero.dim_400x300.png. Auto-refresh list when contacts change. Show loading skeleton during fetch."
+        },
+        {
+          "path": "frontend/src/hooks/useGetContacts.ts",
+          "operation": "create",
+          "description": "Create React Query hook to fetch user's contacts list from backend getContacts method. Enable automatic refetching on window focus. Return contacts array, loading state, and error state. Configure query to invalidate when contacts are modified."
+        },
+        {
+          "path": "frontend/src/components/ContactCard.tsx",
+          "operation": "create",
+          "description": "Create reusable contact card component displaying individual contact details (name, email, phone). Apply warm earth tone color scheme with rounded corners and friendly typography. Include optional delete/remove action button."
+        }
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "summary": "Design clean, modern interface with warm earth tones theme and friendly typography",
+      "acceptanceCriteria": [
+        "Consistent color palette applied across all screens",
+        "Typography hierarchy that enhances readability",
+        "Rounded UI elements that create a friendly feel",
+        "Cohesive design language throughout the application"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Implement global design system with warm earth tone color palette (terracotta #E07856, sage green #8BA888, cream #F5F1E8). Define CSS custom properties for primary, secondary, accent colors. Set up typography hierarchy with friendly, approachable fonts. Apply base styles for rounded corners (border-radius utilities). Ensure consistent spacing and layout foundations."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend Tailwind config with custom color palette matching warm earth tones (terracotta, sage-green, cream). Configure border-radius presets for rounded UI elements. Set custom font family for friendly typography. Add design token utilities for consistent spacing and shadows."
+        },
+        {
+          "path": "frontend/src/components/Layout.tsx",
+          "operation": "create",
+          "description": "Create main layout component with header, navigation, and content area. Apply warm earth tone background gradients and rounded corners. Include LoginButton component in header. Integrate generated search-icon.dim_64x64.png from frontend/public/assets/generated/search-icon.dim_64x64.png and qr-placeholder.dim_128x128.png from frontend/public/assets/generated/qr-placeholder.dim_128x128.png as UI icons. Ensure cohesive design language across all views."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire Layout component into App root. Set up routing structure for contacts list, search, invite links, and QR scanner views. Ensure authenticated users see application content via authorization component integration. Apply warm earth tone theme globally. Include navigation between main features (search, QR scan, invite links, contacts list)."
+        }
+      ]
+    }
+  ]
+}
